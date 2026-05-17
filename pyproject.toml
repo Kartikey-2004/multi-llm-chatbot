@@ -1,0 +1,18 @@
+[project]
+name = "Chat_bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain>=1.3.1",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=4.2.2",
+    "langchain-litellm>=0.6.5",
+    "langchain-openai>=1.2.1",
+    "langgraph>=1.2.0",
+    "litellm>=1.85.0",
+    "openai>=2.37.0",
+    "python-dotenv>=1.2.2",
+    "streamlit>=1.57.0",
+]
