@@ -37,14 +37,14 @@ flowchart LR
   AGENT --> TOOLS
 ```
 
-| Layer | Role |
-| ------- | ------ |
-| `src/app.py` | Streamlit chat UI (frontend) |
-| `src/main.py` | Request handling, history, guardrails (orchestration) |
-| `src/agents/assistant.py` | LangChain agent + system prompt + tools |
-| `src/llms/models.py` | LiteLLM model routing and caching |
-| `src/tools/` | Calculator, search, files, shell |
-| `src/guardrails.py` | Input/output safety checks |
+| Layer                     | Role                                                  |
+| ------------------------- | ----------------------------------------------------- |
+| `src/app.py`              | Streamlit chat UI (frontend)                          |
+| `src/main.py`             | Request handling, history, guardrails (orchestration) |
+| `src/agents/assistant.py` | LangChain agent + system prompt + tools               |
+| `src/llms/models.py`      | LiteLLM model routing and caching                     |
+| `src/tools/`              | Calculator, search, files, shell                      |
+| `src/guardrails.py`       | Input/output safety checks                            |
 
 ## Tech stack
 
@@ -125,19 +125,19 @@ Leave `LANGSMITH_API_KEY` empty to disable tracing.
 
 ## Environment variables
 
-| Variable | Required | Default | Description |
-| ---------- | ---------- | --------- | ------------- |
-| `OPENAI_API_KEY` | No* | — | OpenAI API key |
-| `GEMINI_API_KEY` | No* | — | Google Gemini key (also accepts `GOOGLE_API_KEY`) |
-| `LLM_PROVIDER` | No | `openai` | Default provider: `openai` or `gemini` |
-| `OPENAI_MODEL` | No | `gpt-4o-mini` | OpenAI model name (LiteLLM: `openai/<model>`) |
-| `GEMINI_MODEL` | No | `gemini-2.5-flash` | Gemini model name (LiteLLM: `gemini/<model>`) |
-| `AGENT_FILES_DIR` | No | `agent_output` | Directory for agent-created files |
-| `MAX_HISTORY_MESSAGES` | No | `20` | Max messages sent as context per request |
-| `LANGSMITH_API_KEY` | No | — | LangSmith API key |
-| `LANGSMITH_TRACING` | No | `true` in example | Enable tracing when key is set |
-| `LANGSMITH_PROJECT` | No | — | LangSmith project name |
-| `LANGSMITH_ENDPOINT` | No | LangChain cloud URL | LangSmith API endpoint |
+| Variable               | Required | Default             | Description                                       |
+| ---------------------- | -------- | ------------------- | ------------------------------------------------- |
+| `OPENAI_API_KEY`       | No\*     | —                   | OpenAI API key                                    |
+| `GEMINI_API_KEY`       | No\*     | —                   | Google Gemini key (also accepts `GOOGLE_API_KEY`) |
+| `LLM_PROVIDER`         | No       | `openai`            | Default provider: `openai` or `gemini`            |
+| `OPENAI_MODEL`         | No       | `gpt-4o-mini`       | OpenAI model name (LiteLLM: `openai/<model>`)     |
+| `GEMINI_MODEL`         | No       | `gemini-2.5-flash`  | Gemini model name (LiteLLM: `gemini/<model>`)     |
+| `AGENT_FILES_DIR`      | No       | `agent_output`      | Directory for agent-created files                 |
+| `MAX_HISTORY_MESSAGES` | No       | `20`                | Max messages sent as context per request          |
+| `LANGSMITH_API_KEY`    | No       | —                   | LangSmith API key                                 |
+| `LANGSMITH_TRACING`    | No       | `true` in example   | Enable tracing when key is set                    |
+| `LANGSMITH_PROJECT`    | No       | —                   | LangSmith project name                            |
+| `LANGSMITH_ENDPOINT`   | No       | LangChain cloud URL | LangSmith API endpoint                            |
 
 \*At least one of `OPENAI_API_KEY` or `GEMINI_API_KEY` is required to run the app.
 
@@ -176,12 +176,12 @@ uv run python src/main.py
 
 **CLI commands:**
 
-| Input | Action |
-| ------- | -------- |
-| `quit` or `exit` | Exit the program |
+| Input               | Action                                |
+| ------------------- | ------------------------------------- |
+| `quit` or `exit`    | Exit the program                      |
 | `/openai <message>` | Switch to OpenAI for the next message |
 | `/gemini <message>` | Switch to Gemini for the next message |
-| Any other text | Send a message to the assistant |
+| Any other text      | Send a message to the assistant       |
 
 Tool activity is printed to the terminal when using the CLI.
 
@@ -202,12 +202,12 @@ Prefix a message with `/openai` or `/gemini`, or set `LLM_PROVIDER` in `.env` fo
 
 The assistant may automatically use:
 
-| Tool | Purpose |
-| ------ | --------- |
-| `calculator` | Math expressions |
-| `web_search` | DuckDuckGo web search |
-| `read_file` / `write_file` / `append_file` / `list_files` | File operations under `AGENT_FILES_DIR` |
-| `run_shell_command` | Shell commands (dangerous commands blocked) |
+| Tool                                                      | Purpose                                     |
+| --------------------------------------------------------- | ------------------------------------------- |
+| `calculator`                                              | Math expressions                            |
+| `web_search`                                              | DuckDuckGo web search                       |
+| `read_file` / `write_file` / `append_file` / `list_files` | File operations under `AGENT_FILES_DIR`     |
+| `run_shell_command`                                       | Shell commands (dangerous commands blocked) |
 
 Files created by the agent are saved under `agent_output/` (or your `AGENT_FILES_DIR`). The web UI offers download buttons for generated files.
 
